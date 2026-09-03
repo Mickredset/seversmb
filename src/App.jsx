@@ -1,122 +1,247 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [section, setSection] = useState("home");
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="app">
+      <header className="header">
+        <div className="container header-inner">
+          <h1 className="logo">СНТ Новое Вельяминово</h1>
 
-      <div className="ticks"></div>
+          <nav className="nav">
+            <button
+              type="button"
+              className={section === "home" ? "nav-button active" : "nav-button"}
+              onClick={() => setSection("home")}
+            >
+              Главная
+            </button>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+            <button
+              type="button"
+              className={section === "news" ? "nav-button active" : "nav-button"}
+              onClick={() => setSection("news")}
+            >
+              Новости
+            </button>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+            <button
+              type="button"
+              className={section === "info" ? "nav-button active" : "nav-button"}
+              onClick={() => setSection("info")}
+            >
+              Информация
+            </button>
+
+            <button
+              type="button"
+              className={section === "live" ? "nav-button active" : "nav-button"}
+              onClick={() => setSection("live")}
+            >
+              Вельяминово LIVE
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      <main className="main">
+        <div className="container">
+          {section === "home" && (
+            <HomeSection
+              openNews={() => setSection("news")}
+              openInfo={() => setSection("info")}
+            />
+          )}
+
+          {section === "news" && <NewsSection />}
+
+          {section === "info" && <InfoSection />}
+
+          {section === "live" && <LiveSection />}
+        </div>
+      </main>
+
+      <footer className="footer">
+        <div className="container">
+          <p>© СНТ Новое Вельяминово</p>
+        </div>
+      </footer>
+    </div>
+  );
 }
 
-export default App
+function HomeSection({ openNews, openInfo }) {
+  return (
+    <section className="section">
+      <div className="hero card">
+        <h2 className="section-title">Добро пожаловать</h2>
+
+        <p className="section-text">
+          Официальная страница СНТ Новое Вельяминово. Здесь размещаются
+          новости товарищества и полезная информация для жителей.
+        </p>
+
+        <div className="button-row">
+          <button type="button" className="button button-green" onClick={openNews}>
+            Новости
+          </button>
+
+          <button type="button" className="button button-blue" onClick={openInfo}>
+            Информация о СНТ
+          </button>
+        </div>
+      </div>
+
+      <div className="cards">
+        <div className="card">
+          <h3>Новости</h3>
+          <p>Свежие объявления, отключения, собрания и новости СНТ.</p>
+        </div>
+
+        <div className="card">
+          <h3>Информация</h3>
+          <p>Сведения о товариществе, контакты и полезные данные.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function NewsSection() {
+  const news = [
+    {
+      id: 1,
+      title: "Общее собрание",
+      date: "15 июня 2026",
+      text: "Состоится общее собрание членов СНТ. Повестка будет опубликована заранее."
+    },
+    {
+      id: 2,
+      title: "Отключение электроэнергии",
+      date: "10 июня 2026",
+      text: "Плановые работы на линии. Возможны временные отключения электроэнергии."
+    },
+    {
+      id: 3,
+      title: "Вывоз мусора",
+      date: "5 июня 2026",
+      text: "Просьба не оставлять мусор рядом с контейнерной площадкой."
+    }
+  ];
+
+  return (
+    <section className="section">
+      <h2 className="section-title">Новости</h2>
+
+      <div className="news-grid">
+        {news.map((item) => (
+          <article className="card news-card" key={item.id}>
+            <h3>{item.title}</h3>
+            <p className="news-date">{item.date}</p>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function InfoSection() {
+  return (
+    <section className="section">
+      <h2 className="section-title">Информация о СНТ</h2>
+
+      <div className="info-grid">
+        <div className="card">
+          <h3>О товариществе</h3>
+          <p>
+            СНТ Новое Вельяминово — садоводческое некоммерческое товарищество.
+            Здесь размещается информация для собственников участков и жителей.
+          </p>
+        </div>
+
+        <div className="card">
+          <h3>Контакты</h3>
+          <p>?</p>
+          <p>?</p>
+        </div>
+
+        <div className="card">
+          <h3>Режим работы</h3>
+          <p>?</p>
+          <p>?</p>
+        </div>
+
+        <div className="card">
+          <h3>Документы</h3>
+          <p>
+            Здесь позже можно разместить устав, отчёты, протоколы собраний
+            и другие документы.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LiveSection() {
+  return (
+    <section className="section" style={{
+      maxWidth: '900px',
+      margin: '20px auto',
+      padding: '20px',
+      fontFamily: 'system-ui, -apple-system, sans-serif',
+      border: '1px solid #e1e4e8',
+      borderRadius: '12px',
+      backgroundColor: '#fff',
+      boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
+    }}>
+      <h1 style={{
+        fontSize: '28px',
+        lineHeight: '1.3',
+        marginBottom: '20px',
+        color: '#050505',
+        fontWeight: '800'
+      }}>
+        Тут ничего нету
+      </h1>
+
+      <div style={{
+        position: 'relative',
+        paddingBottom: '56.25%',
+        height: '0',
+        overflow: 'hidden',
+        borderRadius: '8px',
+        backgroundColor: '#000',
+        marginBottom: '24px'
+      }}>
+        <iframe
+          style={{
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            width: '100%',
+            height: '100%',
+            border: '0'
+          }}
+          src="https://youtube.com"
+          title="Live Video Stream"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></iframe>
+      </div>
+
+      <p style={{
+        fontSize: '18px',
+        lineHeight: '1.6',
+        color: '#1c1e21'
+      }}>
+        Вельяминово LIVE
+      </p>
+    </section>
+  );
+}
+
+export default App;
