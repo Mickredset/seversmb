@@ -43,6 +43,14 @@ function App() {
             >
               Вельяминово LIVE
             </button>
+
+            <button
+              type="button"
+              className={section === "velyminovobank" ? "nav-button active" : "nav-button"}
+              onClick={() => setSection("velyminovobank")}
+            >
+              Вельяминово банк
+            </button>
           </nav>
         </div>
       </header>
@@ -61,6 +69,8 @@ function App() {
           {section === "info" && <InfoSection />}
 
           {section === "live" && <LiveSection />}
+
+          {section === "velyminovobank" && <VelyminovobankSection />}
         </div>
       </main>
 
@@ -205,5 +215,40 @@ function LiveSection() {
     </section>
   );
 }
+
+function VelyminovobankSection() {
+  const collected = 12;
+  const target = 20350;
+  const percentage = Math.min(100, Math.round((collected / target) * 100));
+
+  return (
+    <section className="section" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }} >
+      <div style={{ width: '200px', height: '250px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', border: '1px solid #ccc', borderRadius: '8px', padding: '16px', boxSizing: 'border-box' }} >
+        
+        {/* Блок баланса */}
+        <span style={{ fontSize: '14px', color: '#666' }}>Ваш баланс</span>
+        <span style={{ fontSize: '24px', fontWeight: 'bold', marginTop: '4px' }}>0 ₽</span>
+        
+        {/* Разделитель */}
+        <hr style={{ width: '100%', border: 'none', borderTop: '1px solid #eee', margin: '16px 0' }} />
+
+        {/* Блок сбора денег */}
+        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'between', fontSize: '12px', color: '#666', marginBottom: '4px' }}>
+            <span style={{ flexGrow: 1 }}>Сбор: {collected} из {target} ₽</span>
+            <span style={{ fontWeight: 'bold' }}>{percentage}%</span>
+          </div>
+          
+          {/* Индикатор прогресса (Progress Bar) */}
+          <div style={{ width: '100%', height: '6px', backgroundColor: '#e0e0e0', borderRadius: '3px', overflow: 'hidden' }}>
+            <div style={{ width: `${percentage}%`, height: '100%', backgroundColor: '#24a1de', borderRadius: '3px', transition: 'width 0.3s ease' }} />
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
 
 export default App;
