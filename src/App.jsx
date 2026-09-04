@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./App.css";
 import NewsSection from './news.jsx';
-import { Analytics } from "@vercel/analytics/next"
 
 function App() {
   const [section, setSection] = useState("home");
