@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import NewsSection from './news.jsx'; 
 
 function App() {
   const [section, setSection] = useState("home");
@@ -65,7 +66,7 @@ function App() {
 
       <footer className="footer">
         <div className="container">
-          <p>© СНТ Новое Вельяминово</p>
+          <p>СНТ Новое Вельяминово</p>
         </div>
       </footer>
     </div>
@@ -79,7 +80,7 @@ function HomeSection({ openNews, openInfo }) {
         <h2 className="section-title">Добро пожаловать</h2>
 
         <p className="section-text">
-          Официальная страница СНТ Новое Вельяминово. Здесь размещаются
+          Неофициальная страница СНТ Новое Вельяминово. Здесь размещаются
           новости товарищества и полезная информация для жителей.
         </p>
 
@@ -109,44 +110,6 @@ function HomeSection({ openNews, openInfo }) {
   );
 }
 
-function NewsSection() {
-  const news = [
-    {
-      id: 1,
-      title: "Общее собрание",
-      date: "15 июня 2026",
-      text: "Состоится общее собрание членов СНТ. Повестка будет опубликована заранее."
-    },
-    {
-      id: 2,
-      title: "Отключение электроэнергии",
-      date: "10 июня 2026",
-      text: "Плановые работы на линии. Возможны временные отключения электроэнергии."
-    },
-    {
-      id: 3,
-      title: "Вывоз мусора",
-      date: "5 июня 2026",
-      text: "Просьба не оставлять мусор рядом с контейнерной площадкой."
-    }
-  ];
-
-  return (
-    <section className="section">
-      <h2 className="section-title">Новости</h2>
-
-      <div className="news-grid">
-        {news.map((item) => (
-          <article className="card news-card" key={item.id}>
-            <h3>{item.title}</h3>
-            <p className="news-date">{item.date}</p>
-            <p>{item.text}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
 
 function InfoSection() {
   return (
@@ -170,15 +133,14 @@ function InfoSection() {
 
         <div className="card">
           <h3>Режим работы</h3>
-          <p>?</p>
-          <p>?</p>
+          <p>Сайт: без ограничения</p>
+          <p>СНТ: 24/7</p>
         </div>
 
         <div className="card">
           <h3>Документы</h3>
           <p>
-            Здесь позже можно разместить устав, отчёты, протоколы собраний
-            и другие документы.
+            Посёлок СНТ Новое Вельяминово
           </p>
         </div>
       </div>
@@ -205,7 +167,7 @@ function LiveSection() {
         color: '#050505',
         fontWeight: '800'
       }}>
-        Тут ничего нету
+        Зима
       </h1>
 
       <div style={{
@@ -226,8 +188,8 @@ function LiveSection() {
             height: '100%',
             border: '0'
           }}
-          src="https://youtube.com"
-          title="Live Video Stream"
+          src="/2.mp4"
+          title="Video"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>
