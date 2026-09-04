@@ -3,7 +3,6 @@
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
-  /* Сделаем общий фон страницы чуть мягче, чтобы белые карточки выделялись */
   --page-bg: #f9f9fb; 
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
@@ -11,8 +10,7 @@
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.05) 0 10px 15px -3px, rgba(0, 0, 0, 0.02) 0 4px 6px -2px;
+  --shadow: rgba(0, 0, 0, 0.05) 0 10px 15px -3px, rgba(0, 0, 0, 0.02) 0 4px 6px -2px;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -22,14 +20,17 @@
   letter-spacing: 0.18px;
   color-scheme: light dark;
   color: var(--text);
-  background: var(--page-bg); /* Используем мягкий фон для страницы */
+  background: var(--page-bg); 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+/* Вынесли медиазапрос из :root для максимальной совместимости */
+@media (max-width: 1024px) {
+  :root {
+    font-size: 16px; /* Базовый размер шрифта уменьшается на планшетах и мобильных */
   }
 }
 
@@ -38,15 +39,14 @@
     --text: #9ca3af;
     --text-h: #f3f4f6;
     --bg: #16171d;
-    --page-bg: #0f1015; /* Темный фон для страницы */
+    --page-bg: #0f1015; 
     --border: #2e303a;
     --code-bg: #1f2028;
     --accent: #c084fc;
     --accent-bg: rgba(192, 132, 252, 0.15);
     --accent-border: rgba(192, 132, 252, 0.5);
     --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.3) 0 10px 15px -3px, rgba(0, 0, 0, 0.15) 0 4px 6px -2px;
+    --shadow: rgba(0, 0, 0, 0.3) 0 10px 15px -3px, rgba(0, 0, 0, 0.15) 0 4px 6px -2px;
   }
 
   #social .button-icon {
@@ -57,9 +57,9 @@
 body {
   margin: 0;
   background-color: var(--page-bg);
+  overflow-x: hidden; /* Защита от случайного горизонтального скролла на телефонах */
 }
 
-/* #root теперь свободный и растягивается на весь экран */
 #root {
   width: 100%;
   min-height: 100svh;
@@ -68,7 +68,7 @@ body {
   box-sizing: border-box;
 }
 
-/* НОВЫЙ КЛАСС: Ограничивает контент, но оставляет фоны свободными */
+/* Контейнер теперь имеет меньшие отступы на мобильных, чтобы не красть экранное время */
 .container {
   width: 100%;
   max-width: 1160px;
@@ -77,21 +77,36 @@ body {
   box-sizing: border-box;
 }
 
-h1,
-h2 {
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px; /* На смартфонах отступы по бокам делаем компактнее */
+  }
+}
+
+h1, h2 {
   font-family: var(--heading);
   font-weight: 500;
   color: var(--text-h);
 }
 
 h1 {
-  font-size: 48px; /* Чуть уменьшили для большей аккуратности */
+  font-size: 48px; 
   letter-spacing: -1.2px;
   margin: 40px 0 24px;
   text-align: center;
-  @media (max-width: 1024px) {
+}
+
+/* Правильное оформление адаптивности заголовков */
+@media (max-width: 1024px) {
+  h1 {
     font-size: 32px;
     margin: 24px 0;
+  }
+}
+@media (max-width: 480px) {
+  h1 {
+    font-size: 26px; /* Еще чуть меньше для маленьких экранов */
+    letter-spacing: -0.5px;
   }
 }
 
@@ -100,7 +115,10 @@ h2 {
   line-height: 120%;
   letter-spacing: -0.2px;
   margin: 0 0 12px;
-  @media (max-width: 1024px) {
+}
+
+@media (max-width: 1024px) {
+  h2 {
     font-size: 18px;
   }
 }
@@ -111,8 +129,7 @@ p {
   line-height: 150%;
 }
 
-code,
-.counter {
+code, .counter {
   font-family: var(--mono);
   display: inline-flex;
   border-radius: 4px;
@@ -124,4 +141,5 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+  word-break: break-word; /* Чтобы длинный код не ломал сетку на смартфонах */
 }

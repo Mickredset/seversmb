@@ -1,3 +1,4 @@
+/* App.css */
 * {
   margin: 0;
   padding: 0;
@@ -24,6 +25,7 @@ body {
   padding-right: 16px;
 }
 
+/* ШАПКА */
 .header {
   position: sticky;
   top: 0;
@@ -39,19 +41,19 @@ body {
   gap: 16px;
   padding-top: 14px;
   padding-bottom: 14px;
-  flex-wrap: wrap;
 }
 
 .logo {
   font-size: 24px;
   line-height: 1.2;
   color: #166534;
+  font-weight: bold;
 }
 
+/* НАВИГАЦИЯ */
 .nav {
   display: flex;
   gap: 8px;
-  flex-wrap: wrap;
 }
 
 .nav-button {
@@ -63,6 +65,7 @@ body {
   font-size: 16px;
   cursor: pointer;
   transition: 0.2s;
+  white-space: nowrap; /* Запрещаем перенос текста внутри кнопки */
 }
 
 .nav-button:hover {
@@ -74,6 +77,7 @@ body {
   color: white;
 }
 
+/* ОСНОВНОЙ КОНТЕНТ */
 .main {
   flex: 1;
   padding-top: 24px;
@@ -89,6 +93,7 @@ body {
 .section-title {
   font-size: 34px;
   color: #14532d;
+  line-height: 1.2;
 }
 
 .section-text {
@@ -97,16 +102,17 @@ body {
   color: #444;
 }
 
+/* КАРТОЧКИ И СЕТКИ */
 .card {
   background-color: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 16px;
-  padding: 20px;
+  padding: 24px; /* Чуть увеличили для ПК */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .hero {
-  padding: 30px 20px;
+  padding: 40px 24px; /* Чуть увеличили для ПК */
 }
 
 .button-row {
@@ -124,6 +130,7 @@ body {
   cursor: pointer;
   color: white;
   transition: 0.2s;
+  text-align: center;
 }
 
 .button-green {
@@ -142,21 +149,18 @@ body {
   background-color: #1d4ed8;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
+/* Дефолтная сетка для ПК (3 колонки, если карточек много, или оставляем 2) */
+.cards,
 .news-grid,
 .info-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 20px;
 }
 
 .news-card h3 {
   margin-bottom: 8px;
+  line-height: 1.3;
 }
 
 .news-date {
@@ -165,34 +169,46 @@ body {
   margin-bottom: 10px;
 }
 
+/* ПОДВАЛ */
 .footer {
   background-color: #ffffff;
   border-top: 1px solid #dddddd;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   color: #666;
   font-size: 14px;
 }
 
-@media (max-width: 800px) {
+
+/* ==========================================================================
+   МЕДИА-ЗАПРОСЫ (АДАПТИВНОСТЬ)
+   ========================================================================== */
+
+/* 1. ПЛАНШЕТЫ И СРЕДНИЕ ЭКРАНЫ (до 768px) */
+@media (max-width: 768px) {
+  .header-inner {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  /* На планшетах делаем меню с горизонтальным скроллом, чтобы оно не падало вниз */
+  .nav {
+    overflow-x: auto;
+    max-width: 100%;
+    padding-bottom: 4px; /* Зазор для красивого скроллбара */
+    -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
+  }
+  
+  /* Прячем дефолтный некрасивый скроллбар в меню */
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
   .cards,
   .news-grid,
   .info-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .header-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav {
-    width: 100%;
-  }
-
-  .nav-button {
-    flex: 1;
-    text-align: center;
+    grid-template-columns: 1fr; /* Карточки встают в одну колонку */
+    gap: 16px;
   }
 
   .section-title {
@@ -202,8 +218,59 @@ body {
   .section-text {
     font-size: 16px;
   }
+}
+
+/* 2. ТЕЛЕФОНЫ (до 480px) */
+@media (max-width: 480px) {
+  .header-inner {
+    flex-direction: column; /* На маленьких телефонах логотип и меню встают друг под друга */
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .logo {
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .nav {
+    justify-content: flex-start;
+  }
+
+  .nav-button {
+    padding: 8px 12px;
+    font-size: 15px;
+  }
+
+  .main {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .card {
+    padding: 16px; /* Уменьшаем внутренние отступы карточек, чтобы сберечь место */
+  }
+
+  .hero {
+    padding: 24px 16px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  /* Нижние кнопки встают во всю ширину экрана друг под друга */
+  .button-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
 
   .button {
     width: 100%;
+  }
+  
+  .footer {
+    text-align: center; /* Центрируем копирайт в подвале */
   }
 }
