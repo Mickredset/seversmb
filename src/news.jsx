@@ -2,7 +2,7 @@
 import newsData from "./data/news.json";
 
 function NewsSection() {
-  const news = newsData
+  const news = newsData;
 
   return (
     <section className="section">
@@ -13,7 +13,13 @@ function NewsSection() {
           <article className="card news-card" key={item.id}>
             <h3>{item.title}</h3>
             <p className="news-date">{item.date}</p>
-            <p>{item.text}</p>
+            
+            {/* Перебираем массив строк из JSON */}
+            {item.text.map((paragraph, index) => (
+              <p key={index} className="news-paragraph">
+                {paragraph}
+              </p>
+            ))}
           </article>
         ))}
       </div>
@@ -21,5 +27,4 @@ function NewsSection() {
   );
 }
 
-// Экспортируем компонент, чтобы его можно было использовать в других файлах
 export default NewsSection;
