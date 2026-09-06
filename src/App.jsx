@@ -107,6 +107,7 @@ function HomeSection({ openNews, openInfo }) {
 
       <div className="cards">
         <div className="card">
+          <img src="/kartinka-raspberry.webp" alt="Малина" width="150" />
           <h3>Новости</h3>
           <p>Свежие объявления, отключения, собрания и новости СНТ.</p>
         </div>
