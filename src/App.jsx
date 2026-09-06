@@ -172,57 +172,56 @@ function LiveSection() {
       maxWidth: '900px',
       margin: '20px auto',
       padding: '20px',
-      fontFamily: 'system-ui, -apple-system, sans-serif',
+      fontFamily: 'Roboto, Arial, sans-serif',
       border: '1px solid #e1e4e8',
       borderRadius: '12px',
       backgroundColor: '#fff',
       boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
     }}>
       <h1 style={{
-        fontSize: '28px',
-        lineHeight: '1.3',
-        marginBottom: '20px',
-        color: '#050505',
-        fontWeight: '800'
+        fontSize: '20px',
+        lineHeight: '1.4',
+        marginBottom: '16px',
+        color: '#0f0f0f',
+        fontWeight: 'bold'
       }}>
         Зима
       </h1>
 
       <div style={{
         position: 'relative',
-        paddingBottom: '56.25%',
-        height: '0',
-        overflow: 'hidden',
-        borderRadius: '8px',
+        width: '100%',
+        aspectRatio: '16/9',
         backgroundColor: '#000',
-        marginBottom: '24px'
+        borderRadius: '12px',
+        overflow: 'hidden'
       }}>
-        <iframe
+        {/* controls - включает родной плеер, который работает всегда */}
+        {/* А за счет инлайн-стилей мы убираем лишнее */}
+        <video
+          src="/2.mp4"
+          controls
           style={{
-            position: 'absolute',
-            top: '0',
-            left: '0',
             width: '100%',
             height: '100%',
-            border: '0'
+            display: 'block',
+            objectFit: 'contain'
           }}
-          src="/2.mp4"
-          title="Video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
+        />
       </div>
 
       <p style={{
-        fontSize: '18px',
-        lineHeight: '1.6',
-        color: '#1c1e21'
+        fontSize: '14px',
+        color: '#606060',
+        marginTop: '12px',
+        fontWeight: '500'
       }}>
         Вельяминово LIVE
       </p>
     </section>
   );
 }
+
 
 function VelyminovobankSection() {
   return (
