@@ -107,7 +107,14 @@ function HomeSection({ openNews, openInfo }) {
 
       <div className="cards">
         <div className="card">
-          <img src="/kartinka-raspberry.webp" alt="Малина" width="150" />
+          <img 
+            src="/kartinka-raspberry.webp" 
+            alt="Свежая малина с куста в СНТ Новое Вельяминово" 
+            width="150" 
+            height="150"
+            loading="lazy"
+            title="Урожай малины 2026"
+        />
           <h3>Новости</h3>
           <p>Свежие объявления, отключения, собрания и новости СНТ.</p>
         </div>
