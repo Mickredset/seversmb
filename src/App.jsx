@@ -1,10 +1,33 @@
 import { useState } from "react";
 import "./App.css";
 import NewsSection from './news.jsx';
+import { Routes, Route, useLocation } from "react-router-dom";
+import SashaSection from './sasha.jsx';
 
 function App() {
+  const location = useLocation();
   const [section, setSection] = useState("home");
 
+  if (location.pathname === "/sasha") {
+    return (
+      <div className="app">
+        <header className="header">
+          <div className="container header-inner">
+            <h1 className="logo">СНТ Новое Вельяминово</h1>
+            <a href="/" className="nav-button">← На главную</a>
+          </div>
+        </header>
+        <main className="main">
+          <div className="container">
+            <SashaSection />
+          </div>
+        </main>
+        <footer className="footer">
+          <div className="container"><p>СНТ Новое Вельяминово</p></div>
+        </footer>
+      </div>
+    );
+  }
   return (
     <div className="app">
       <header className="header">
