@@ -230,16 +230,16 @@ function VelyminovobankSection() {
         padding: '20px',
       }}
     >
-      {/* Первый информер: Вельяминово → Москва */}
+      {/* 1. Поисковая строка — посетитель сам ищет любой маршрут */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h3 style={{ margin: '0 0 12px 0', color: '#333' }}>
-          🚂 Вельяминово → Москва (Павелецкий вокзал)
+          🔍 Поиск маршрута и билетов
         </h3>
         <iframe
-          src="https://rasp.yandex.ru/informers/v2/search/?fromId=s9602029&toId=c213&size=25&color=1"
-          title="Расписание электричек Вельяминово — Москва"
+          src="https://rasp.yandex.ru/informers/widgets/search/horiz/"
+          title="Яндекс Расписания — поиск маршрута"
           width="700"
-          height="1191"
+          height="110"
           frameBorder="0"
           style={{
             border: '0',
@@ -252,14 +252,14 @@ function VelyminovobankSection() {
         />
       </div>
 
-      {/* Второй информер: Ефремов → Москва (Курский вокзал) */}
+      {/* 2. Готовое расписание: Вельяминово → Москва */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h3 style={{ margin: '0 0 12px 0', color: '#333' }}>
-          🚂 Ефремов → Москва (Курский вокзал)
+          🚂 Вельяминово → Москва (Павелецкий вокзал)
         </h3>
         <iframe
-          src="https://rasp.yandex.ru/informers/v2/search/?fromId=s9600916&toId=s2000002&size=25&color=1"
-          title="Расписание поездов Ефремов — Москва"
+          src="https://rasp.yandex.ru/informers/v2/search/?fromId=s9602029&toId=c213&size=25&color=1"
+          title="Расписание электричек Вельяминово — Москва"
           width="700"
           height="1191"
           frameBorder="0"
