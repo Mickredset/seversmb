@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://velyminovo.vercel.app/sitemap.xml
