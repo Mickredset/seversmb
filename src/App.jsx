@@ -69,6 +69,14 @@ function App() {
 
             <button
               type="button"
+              className={section === "donate" ? "nav-button active" : "nav-button"}
+              onClick={() => setSection("donate")}
+            >
+              Поддержите нас!
+            </button>
+
+            <button
+              type="button"
               className={section === "velyminovobank" ? "nav-button active" : "nav-button"}
               onClick={() => setSection("velyminovobank")}
             >
@@ -94,6 +102,8 @@ function App() {
           {section === "live" && <LiveSection />}
 
           {section === "velyminovobank" && <VelyminovobankSection />}
+
+          {section === "donate" && <DonateSection />}
         </div>
       </main>
 
@@ -304,6 +314,15 @@ function VelyminovobankSection() {
         />
       </div>
     </section>
+  );
+}
+
+function DonateSection() {
+  return (
+    <>
+    <title>Донат</title>
+    <h1 style={{ color: 'black' }}>Поддержите нас!</h1>
+  </>
   );
 }
 
