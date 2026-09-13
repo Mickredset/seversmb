@@ -919,7 +919,7 @@ export function LiveSection() {
       >
         <video
           ref={videoRef}
-          src="/2.mp4"
+          src="/2.webm"
           className="yt-player__video"
           preload="metadata"
           playsInline
