@@ -1,3 +1,4 @@
+// App.jsx
 import { useCallback, useEffect, useRef, useState } from "react";
 import "./App.css";
 import NewsSection from './news.jsx';

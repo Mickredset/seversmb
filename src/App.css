@@ -274,3 +274,30 @@ body {
     text-align: center; /* Центрируем копирайт в подвале */
   }
 }
+
+/* Стили для поиска новостей */
+.news-search {
+  margin-bottom: 24px;
+  max-width: 600px;
+}
+
+.news-search-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #e1e4e8;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.news-search-input:focus {
+  border-color: #0366d6;
+}
+
+.news-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #e9eaeb;
+  font-size: 16px;
+}
