@@ -1130,8 +1130,28 @@ function InfoSection() {
 
         <div className="card">
           <h3>Контакты</h3>
-          <p>?</p>
-          <p>?</p>
+          <p>podmoskovye.vercel.app</p>
+          <p>
+            Узнать подробнее о коттеджном поселке: 
+            <a 
+            href="https://yandex.ru/maps/org/novoye_velyaminovo/93573306793/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            style={{
+              display: 'inline-block',
+              padding: '8px 16px',
+              backgroundColor: '#5eff74',
+              color: '#000',
+              textDecoration: 'none',
+              borderRadius: '8px',
+              fontWeight: 'bold',
+              fontFamily: 'Arial, sans-serif'
+            }}
+          >
+            Яндекс Карты
+          </a>
+          </p>
+
         </div>
 
         <div className="card">
